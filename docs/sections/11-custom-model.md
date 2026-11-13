@@ -2,8 +2,8 @@
 
 Use your own model, for example to add relations or accessors. It must extend the package's `Reaction`:
 
-```php title="app/Reaction.php"
-namespace App;
+```php title="app/Models/Reaction.php"
+namespace App\Models;
 
 use Pharaonic\Laravel\Reacts\Models\Reaction as BaseReaction;
 
@@ -17,7 +17,7 @@ class Reaction extends BaseReaction
 ```
 
 ```php title="config/pharaonic/reacts.php"
-'model' => \App\Reaction::class,
+'model' => \App\Models\Reaction::class,
 'table' => 'social_reactions',
 'connection' => 'mysql',
 ```

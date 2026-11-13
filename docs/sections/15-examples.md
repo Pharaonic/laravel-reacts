@@ -6,8 +6,8 @@ Posts keep one reaction per user, while chat messages keep the default multiple 
 
 - ===Post model
 
-  ```php title="app/Post.php"
-  namespace App;
+  ```php title="app/Models/Post.php"
+  namespace App\Models;
 
   use Illuminate\Database\Eloquent\Model;
   use Pharaonic\Laravel\Reacts\Concerns\HasReactions;
@@ -32,8 +32,8 @@ Posts keep one reaction per user, while chat messages keep the default multiple 
 
 - ===Chat message model
 
-  ```php title="app/ChatMessage.php"
-  namespace App;
+  ```php title="app/Models/ChatMessage.php"
+  namespace App\Models;
 
   use Illuminate\Database\Eloquent\Model;
   use Pharaonic\Laravel\Reacts\Concerns\HasReactions;

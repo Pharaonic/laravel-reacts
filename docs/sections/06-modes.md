@@ -19,8 +19,8 @@ Set the default for the whole application:
 
 Or let a reactable decide with `ResolvesReactionMode`. The mode belongs to the reactable, never to the reactor:
 
-```php title="app/Post.php"
-namespace App;
+```php title="app/Models/Post.php"
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Pharaonic\Laravel\Reacts\Concerns\HasReactions;

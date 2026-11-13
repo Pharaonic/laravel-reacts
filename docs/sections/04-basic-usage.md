@@ -4,8 +4,8 @@
 
 Add `CanReact` to the model that reacts. It does not have to be a user: a team, a bot or any other model works.
 
-```php title="app/User.php"
-namespace App;
+```php title="app/Models/User.php"
+namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Pharaonic\Laravel\Reacts\Concerns\CanReact;
@@ -18,8 +18,8 @@ class User extends Authenticatable
 
 Add `HasReactions` to the model that receives reactions. It gives the model its `reactions()` relation, its counts and its query scope.
 
-```php title="app/Post.php"
-namespace App;
+```php title="app/Models/Post.php"
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Pharaonic\Laravel\Reacts\Concerns\HasReactions;
