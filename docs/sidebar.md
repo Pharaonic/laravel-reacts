@@ -1,0 +1,22 @@
+- Getting Started
+  - [Overview](#overview)
+  - [Installation](#installation)
+  - [Configuration](#configuration)
+- Usage
+  - [Basic Usage](#basic-usage)
+  - [Reaction Types and Groups](#reaction-types)
+  - [Single and Multiple Mode](#modes)
+  - [Listing Reactions](#listing-reactions)
+  - [Relationships and Queries](#relationships-and-queries)
+  - [Authorization and Policies](#authorization)
+  - [Events](#events)
+  - [Custom Reaction Model](#custom-model)
+  - [Deletes and Soft Deletes](#deletion-and-soft-deletes)
+  - [Integrity and Concurrency](#integrity-and-concurrency)
+- API Reference
+  - [Reference](#api-reference)
+- Examples
+  - [Use Cases](#examples)
+  - [Troubleshooting](#troubleshooting)
+- Community
+  - [Contributors](#contributors)
