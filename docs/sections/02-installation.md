@@ -5,7 +5,7 @@ Install the package with Composer and create its table.
 ### Requirements
 
 - PHP 8.0
-- Laravel 6
+- Laravel 7
 - MySQL, MariaDB, PostgreSQL or SQLite
 - PCRE2 10.40 or later for free-form emoji (PHP's bundled PCRE on most current builds)
 
