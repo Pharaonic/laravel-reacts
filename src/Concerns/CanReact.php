@@ -7,6 +7,7 @@ namespace Pharaonic\Laravel\Reacts\Concerns;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Pharaonic\Laravel\Reacts\Models\Reaction;
 use Pharaonic\Laravel\Reacts\Support\ReactionManager;
 
 /**
@@ -94,6 +95,8 @@ trait CanReact
 
     /**
      * This model's reactions on the reactable, oldest first.
+     *
+     * @return Collection<int, Reaction>
      */
     public function reactionsOn(Model $reactable): Collection
     {
