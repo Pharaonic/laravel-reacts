@@ -283,7 +283,7 @@ final class ReactionManager
                 $others = [];
                 $slotted = false;
 
-                foreach (self::rows($pair) as $row) {
+                foreach (self::rows($pair, $round === 1) as $row) {
                     $slotted = $slotted || $row->single_slot_hash !== null;
 
                     if ($row->identity_hash === $identity) {
@@ -385,9 +385,23 @@ final class ReactionManager
      *
      * @return list<Reaction>
      */
-    private static function rows(string $pair): array
+    private static function rows(string $pair, bool $firstRound = false): array
     {
         $reaction = ReactionModelResolver::reaction();
+
+        // On MySQL a locking read of a pair with no rows takes a gap lock, and
+        // concurrent writers that each hold one deadlock on their inserts. So the
+        // first read is a plain one: an empty pair goes straight to the insert,
+        // which the unique indexes guard; a pair with rows is read again, locked.
+        if ($firstRound && in_array($reaction->getConnection()->getDriverName(), ['mysql', 'mariadb'], true)) {
+            $plain = self::query($reaction)->where('pair_hash', $pair);
+            $plain->getQuery()->useWritePdo();
+
+            if (! $plain->exists()) {
+                return [];
+            }
+        }
+
         $query = self::query($reaction)->where('pair_hash', $pair);
         $query->getQuery()->orderBy($reaction->getKeyName())->useWritePdo()->lockForUpdate();
 
