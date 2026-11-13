@@ -26,6 +26,8 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @phpstan-type Item array{kind: string, key: string, label: string, emoji: string|null, icon: string|null, count: int, selected: bool, selectable: bool}
  * @phpstan-type View array{mode: string, free_form_enabled: bool, total: int, choices: list<Item>, used_other: list<Item>}
+ *
+ * @implements Arrayable<string, mixed>
  */
 final class ReactionView implements Arrayable
 {
