@@ -41,8 +41,8 @@ Here posts offer `like`, `love`, `laugh`, `wow`, `sad` and `angry`, in that orde
 
 A reactable uses `default_group` unless it implements `ResolvesReactionGroup`:
 
-```php title="app/ChatMessage.php"
-namespace App;
+```php title="app/Models/ChatMessage.php"
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Pharaonic\Laravel\Reacts\Concerns\HasReactions;

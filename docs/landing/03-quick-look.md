@@ -5,7 +5,7 @@ subtitle: React, toggle and list reactions, with the counts and the viewer's cho
 file: routes/web.php
 language: php
 code: |
-  use App\Post;
+  use App\Models\Post;
   use Pharaonic\Laravel\Reacts\Support\ReactionView;
 
   Route::post('posts/{post}/react', function (Post $post) {

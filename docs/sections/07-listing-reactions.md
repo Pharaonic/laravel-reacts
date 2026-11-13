@@ -41,15 +41,17 @@ Each item has `kind` (`registered` or `emoji`), `key`, `label`, `emoji`, `icon`,
 The package has no routes; these are your application's.
 
 ```php title="routes/web.php"
-Route::get('posts/{post}', 'PostReactionsController@show')->name('posts.show');
-Route::post('posts/{post}/reactions/toggle', 'PostReactionsController@toggle')
+use App\Http\Controllers\PostReactionsController;
+
+Route::get('posts/{post}', [PostReactionsController::class, 'show'])->name('posts.show');
+Route::post('posts/{post}/reactions/toggle', [PostReactionsController::class, 'toggle'])
     ->middleware('auth')->name('posts.reactions.toggle');
 ```
 
 ```php title="app/Http/Controllers/PostReactionsController.php"
 namespace App\Http\Controllers;
 
-use App\Post;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Pharaonic\Laravel\Reacts\Support\ReactionView;
@@ -113,7 +115,7 @@ Clicking a selected reaction removes it; clicking another adds it, or replaces t
 ### As JSON
 
 ```php title="routes/api.php"
-use App\Post;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Pharaonic\Laravel\Reacts\Support\ReactionView;
