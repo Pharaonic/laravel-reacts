@@ -45,6 +45,7 @@ Configuration keys (`pharaonic.reacts.*`), publish tags, and registered Blade, A
 - Removal is a query-builder delete checked by affected rows, so Eloquent `deleting`/`deleted` events do not run for it. Cleanup on delete is a bulk delete without events or policy.
 - The package's own reads ignore global scopes of a custom reaction model; the `reactions()` and `givenReactions()` relations are plain Eloquent and apply them.
 - Ids are stored as strings (`varchar(64)`), so the relations compare the parent key as a string in `has()`, `whereHas()`, and `withCount()` (`ReactionsMorphMany`), as in laravel-bookmarks.
+- Eloquent `Collection` and `Arrayable` are generic from Laravel 9, and PHPStan rejects generic types on a class that is not. Their generic PHPDoc (`CanReact::reactionsOn()`, `ReactionManager::on()`, `ReactionView`) is on `9.x` and later only; the code is the same on every line.
 - `phpstan.neon.dist` also analyses `tests/Fixtures`: PHPStan analyses a trait only through a class that uses it.
 - `ConcurrencyTest` runs separate PHP processes (`tests/Processes/worker.php`) against a shared database: a SQLite file by default, MySQL or PostgreSQL through the `REACTS_DB*` environment variables (`.github/workflows/databases.yml`).
 - The published-migration test needs a process where the migration class was never declared. `6.x` runs it as a PHPUnit class in separate processes; Pest cannot, so later lines run `tests/Processes/published-migration.php` as a subprocess.
