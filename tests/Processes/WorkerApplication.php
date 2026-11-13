@@ -1,6 +1,6 @@
 <?php
 
-namespace Pharaonic\Laravel\Reacts\Tests\Concurrency;
+namespace Pharaonic\Laravel\Reacts\Tests\Processes;
 
 use Pharaonic\Laravel\Reacts\Tests\TestCase;
 
