@@ -6,13 +6,12 @@ use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\DB;
 use Orchestra\Testbench\TestCase as Orchestra;
+use Pharaonic\Laravel\Reacts\Catalog\EmojiValidator;
 use Pharaonic\Laravel\Reacts\ReactsServiceProvider;
 use Pharaonic\Laravel\Reacts\Tests\Fixtures\Schema;
 
 abstract class TestCase extends Orchestra
 {
-    use RequiresEmojiProperties;
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -37,7 +36,21 @@ abstract class TestCase extends Orchestra
     {
         $app['config']->set('database.default', 'testing');
         $app['config']->set('database.connections.testing', self::connection());
+        $app['config']->set('database.connections.secondary', ['driver' => 'sqlite', 'database' => ':memory:', 'prefix' => '']);
         $app['config']->set('view.paths', [__DIR__.'/Fixtures/views']);
+        $app['config']->set('app.key', 'base64:'.base64_encode(str_repeat('k', 32)));
+    }
+
+    /**
+     * Free-form emoji need PCRE2 10.40 or later. PHP builds that bundle an
+     * older PCRE (PHP 8.0 and 8.1 on Windows and in the official Docker
+     * images) skip these tests, and run the fallback tests instead.
+     */
+    protected function requireEmojiProperties(): void
+    {
+        if (! EmojiValidator::isSupported()) {
+            $this->markTestSkipped('Free-form emoji need PCRE2 10.40 or later; this PHP has PCRE '.PCRE_VERSION.'.');
+        }
     }
 
     /**

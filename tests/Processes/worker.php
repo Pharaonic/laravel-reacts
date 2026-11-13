@@ -11,8 +11,8 @@ use Illuminate\Support\Facades\Event;
 use Pharaonic\Laravel\Reacts\Events\ReactionCreated;
 use Pharaonic\Laravel\Reacts\Events\ReactionRemoved;
 use Pharaonic\Laravel\Reacts\Events\ReactionReplaced;
-use Pharaonic\Laravel\Reacts\Tests\Concurrency\WorkerApplication;
 use Pharaonic\Laravel\Reacts\Tests\Fixtures\User;
+use Pharaonic\Laravel\Reacts\Tests\Processes\WorkerApplication;
 
 require __DIR__.'/../../vendor/autoload.php';
 
