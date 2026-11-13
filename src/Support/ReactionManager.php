@@ -138,7 +138,7 @@ final class ReactionManager
         $query = self::query($reaction)->where('pair_hash', ReactionIdentity::pairHash($ends[0], $ends[1]));
         $query->getQuery()->orderBy($reaction->getKeyName());
 
-        return $query->get();
+        return $reaction->newCollection(self::models($query->get()));
     }
 
     /**
@@ -575,9 +575,10 @@ final class ReactionManager
     }
 
     /**
+     * @param  iterable<mixed>  $rows
      * @return list<Reaction>
      */
-    private static function models(Collection $rows): array
+    private static function models(iterable $rows): array
     {
         $models = [];
 
