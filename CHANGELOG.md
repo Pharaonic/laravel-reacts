@@ -2,7 +2,7 @@
 
 All notable changes to this project are documented here.
 
-## 13.0.0 - Unreleased
+## 13.0.0 - 2026-11-14
 
 First release of the Laravel 13 line, built from 12.0.0.
 
