@@ -2,7 +2,7 @@
 
 All notable changes to this project are documented here.
 
-## 7.0.0 - Unreleased
+## 7.0.0 - 2026-11-14
 
 First release of the Laravel 7 line, built from 6.0.0.
 
