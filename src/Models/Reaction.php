@@ -47,7 +47,7 @@ class Reaction extends Model
      */
     public function getConnectionName()
     {
-        return $this->connection ?? ReactionModelResolver::connection();
+        return parent::getConnectionName() ?? ReactionModelResolver::connection();
     }
 
     /**
