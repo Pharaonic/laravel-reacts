@@ -1,6 +1,6 @@
 {
   "name": "pharaonic/laravel-reacts",
-  "description": "Polymorphic reactions for Laravel Eloquent models: registered and free-form emoji reactions, grouped catalogs, single or multiple mode, and database-enforced uniqueness.",
+  "description": "Polymorphic emoji reactions for Laravel Eloquent models, with registered types, grouped catalogs, single or multiple mode, and database-enforced uniqueness.",
   "type": "library",
   "license": "MIT",
   "keywords": [
@@ -24,18 +24,18 @@
     "source": "https://github.com/Pharaonic/laravel-reacts"
   },
   "require": {
-    "php": ">=8.2 <8.6",
+    "php": ">=8.3 <8.6",
     "ext-mbstring": "*",
-    "illuminate/contracts": "^12.0",
-    "illuminate/database": "^12.0",
-    "illuminate/support": "^12.0"
+    "illuminate/contracts": "^13.0",
+    "illuminate/database": "^13.0",
+    "illuminate/support": "^13.0"
   },
   "require-dev": {
     "laravel/pint": "^1.20",
-    "orchestra/testbench": "^10.0",
-    "pestphp/pest": "^3.8 || ^4.0",
+    "orchestra/testbench": "^11.0",
+    "pestphp/pest": "^4.0",
     "phpstan/phpstan": "^2.1.33",
-    "phpunit/phpunit": "^11.5.50 || ^12.5.8"
+    "phpunit/phpunit": "^12.5.8"
   },
   "autoload": {
     "psr-4": {
