@@ -1,6 +1,6 @@
 {
   "name": "pharaonic/laravel-reacts",
-  "description": "Polymorphic reactions for Laravel Eloquent models: registered and free-form emoji reactions, grouped catalogs, single or multiple mode, and database-enforced uniqueness.",
+  "description": "Polymorphic emoji reactions for Laravel Eloquent models, with registered types, grouped catalogs, single or multiple mode, and database-enforced uniqueness.",
   "type": "library",
   "license": "MIT",
   "keywords": [
