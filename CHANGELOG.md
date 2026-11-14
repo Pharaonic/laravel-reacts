@@ -2,7 +2,7 @@
 
 All notable changes to this project are documented here.
 
-## 9.0.0 - Unreleased
+## 9.0.0 - 2026-11-14
 
 First release of the Laravel 9 line, built from 8.0.0.
 
