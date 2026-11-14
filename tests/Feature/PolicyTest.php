@@ -77,3 +77,15 @@ test('a policy class must implement the contract', function () {
     $this->expectException(InvalidReactionConfiguration::class);
     User::create()->react(Post::create(), 'like');
 });
+
+test('a policy binding that resolves to something else refuses the reaction', function () {
+    app()->bind(NoSelfReactionPolicy::class, fn () => new \stdClass);
+
+    $this->expectException(ReactionNotAllowed::class);
+
+    try {
+        User::create()->react(Post::create(), 'like');
+    } finally {
+        $this->assertSame(0, Reaction::query()->count());
+    }
+});
