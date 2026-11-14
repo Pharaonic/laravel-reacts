@@ -11,6 +11,4 @@ use UnexpectedValueException;
  * package cannot work with: unknown groups, inheritance cycles, model classes,
  * table or connection names, cache settings, modes, or definition shapes.
  */
-class InvalidReactionConfiguration extends UnexpectedValueException
-{
-}
+class InvalidReactionConfiguration extends UnexpectedValueException {}

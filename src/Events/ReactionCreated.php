@@ -17,6 +17,5 @@ final class ReactionCreated
         public Reaction $reaction,
         public Model $reactor,
         public Model $reactable,
-    ) {
-    }
+    ) {}
 }

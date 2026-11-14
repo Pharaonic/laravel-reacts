@@ -11,6 +11,4 @@ use InvalidArgumentException;
  * type, free-form emoji where the group does not allow it, a sequence that is
  * not one emoji, or catalog input that does not describe a valid type.
  */
-class InvalidReactionType extends InvalidArgumentException
-{
-}
+class InvalidReactionType extends InvalidArgumentException {}

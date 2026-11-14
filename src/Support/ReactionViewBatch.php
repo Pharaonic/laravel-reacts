@@ -22,9 +22,7 @@ final class ReactionViewBatch
     /**
      * @param  array<string, View>  $views  by morph type and key
      */
-    private function __construct(private array $views)
-    {
-    }
+    private function __construct(private array $views) {}
 
     /**
      * The view of a reactable in the batch, found by morph type and key.

@@ -12,8 +12,7 @@ final class ReactionContext
     public function __construct(
         private string $group,
         private string $mode,
-    ) {
-    }
+    ) {}
 
     public function group(): string
     {

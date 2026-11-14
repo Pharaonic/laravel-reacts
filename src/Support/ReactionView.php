@@ -36,9 +36,7 @@ final class ReactionView implements Arrayable
      *
      * @internal use ReactionView::for() or ReactionView::forMany()
      */
-    public function __construct(private array $data)
-    {
-    }
+    public function __construct(private array $data) {}
 
     /**
      * The view of one saved reactable, for a viewer (null: nobody is signed in).

@@ -22,8 +22,7 @@ final class ReactionDefinition
         private ?string $emoji = null,
         private ?string $icon = null,
         private array $meta = [],
-    ) {
-    }
+    ) {}
 
     /**
      * The definition of a free-form emoji reaction.
