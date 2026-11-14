@@ -548,7 +548,7 @@ final class ReactionManager
             ));
         }
 
-        $policy = Container::getInstance()->make($class);
+        $policy = self::resolve($class);
 
         if (! $policy instanceof ReactionPolicy || ! $policy->allows($reactor, $reactable, $definition, $context)) {
             throw new ReactionNotAllowed(sprintf(
@@ -556,6 +556,15 @@ final class ReactionManager
                 get_class($reactor), $definition->key(), get_class($reactable)
             ));
         }
+    }
+
+    /**
+     * Resolve from the container by name. An application binding decides what
+     * comes back, so the result is checked rather than trusted.
+     */
+    private static function resolve(string $abstract): mixed
+    {
+        return Container::getInstance()->make($abstract);
     }
 
     /**
