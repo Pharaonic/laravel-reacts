@@ -52,6 +52,8 @@ class Reaction extends Model
 
     /**
      * The model that reacted.
+     *
+     * @return MorphTo<Model, $this>
      */
     public function reactor(): MorphTo
     {
@@ -60,6 +62,8 @@ class Reaction extends Model
 
     /**
      * The model that was reacted to.
+     *
+     * @return MorphTo<Model, $this>
      */
     public function reactable(): MorphTo
     {
@@ -68,6 +72,8 @@ class Reaction extends Model
 
     /**
      * Only the reactions the reactor gave.
+     *
+     * @param  Builder<static>  $query
      */
     public function scopeWhereReactor(Builder $query, Model $reactor): void
     {
@@ -76,6 +82,8 @@ class Reaction extends Model
 
     /**
      * Only the reactions the reactable received.
+     *
+     * @param  Builder<static>  $query
      */
     public function scopeWhereReactable(Builder $query, Model $reactable): void
     {
@@ -84,6 +92,8 @@ class Reaction extends Model
 
     /**
      * Only the reactions of one type ("love", or an emoji such as "🚀").
+     *
+     * @param  Builder<static>  $query
      *
      * @throws \Pharaonic\Laravel\Reacts\Exceptions\InvalidReactionType when the type is invalid
      */

@@ -6,7 +6,9 @@ namespace Pharaonic\Laravel\Reacts\Relations;
 
 use Illuminate\Database\Connection;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Pharaonic\Laravel\Reacts\Models\Reaction;
 use Pharaonic\Laravel\Reacts\Support\ReactionIdentity;
 
 /**
@@ -16,6 +18,10 @@ use Pharaonic\Laravel\Reacts\Support\ReactionIdentity;
  * share it. This relation compares the parent key as a string too: PostgreSQL
  * refuses to compare a bigint or uuid column with a varchar one, and on MySQL
  * and SQLite the string comparison is what lets the unique index be used.
+ *
+ * @template TDeclaringModel of Model
+ *
+ * @extends MorphMany<Reaction, TDeclaringModel>
  *
  * @internal
  */
@@ -36,7 +42,7 @@ final class ReactionsMorphMany extends MorphMany
     /**
      * Constrain eager loading to the parents' keys, as strings.
      *
-     * @param  array<int, \Illuminate\Database\Eloquent\Model>  $models
+     * @param  array<int, TDeclaringModel>  $models
      * @return void
      */
     public function addEagerConstraints(array $models)
@@ -58,8 +64,10 @@ final class ReactionsMorphMany extends MorphMany
     /**
      * The subquery behind has(), whereHas() and withCount().
      *
+     * @param  Builder<Reaction>  $query
+     * @param  Builder<TDeclaringModel>  $parentQuery
      * @param  mixed  $columns
-     * @return Builder
+     * @return Builder<Reaction>
      */
     public function getRelationExistenceQuery(Builder $query, Builder $parentQuery, $columns = ['*'])
     {

@@ -188,6 +188,11 @@ final class ReactionManager
 
     /**
      * The reactions given (reactor) or received (reactable) by the model.
+     *
+     * @template TParent of Model
+     *
+     * @param  TParent  $parent
+     * @return MorphMany<Reaction, TParent>
      */
     public static function relation(Model $parent, string $side): MorphMany
     {
@@ -205,6 +210,10 @@ final class ReactionManager
 
     /**
      * Limit a reactions query to one reactor or reactable. An unsaved model matches nothing.
+     *
+     * @template TModel of Model
+     *
+     * @param  Builder<TModel>  $query
      */
     public static function constrain(Builder $query, string $side, Model $model): void
     {
@@ -222,6 +231,10 @@ final class ReactionManager
 
     /**
      * Limit a reactions query to one reaction type.
+     *
+     * @template TModel of Model
+     *
+     * @param  Builder<TModel>  $query
      */
     public static function constrainType(Builder $query, string $type): void
     {
@@ -548,7 +561,7 @@ final class ReactionManager
             ));
         }
 
-        $policy = Container::getInstance()->make($class);
+        $policy = self::resolve($class);
 
         if (! $policy instanceof ReactionPolicy || ! $policy->allows($reactor, $reactable, $definition, $context)) {
             throw new ReactionNotAllowed(sprintf(
@@ -556,6 +569,15 @@ final class ReactionManager
                 get_class($reactor), $definition->key(), get_class($reactable)
             ));
         }
+    }
+
+    /**
+     * Resolve from the container by name. An application binding decides what
+     * comes back, so the result is checked rather than trusted.
+     */
+    private static function resolve(string $abstract): mixed
+    {
+        return Container::getInstance()->make($abstract);
     }
 
     /**
@@ -568,6 +590,8 @@ final class ReactionManager
 
     /**
      * A query on the reactions table without the model's global scopes.
+     *
+     * @return Builder<Reaction>
      */
     private static function query(?Reaction $reaction = null): Builder
     {

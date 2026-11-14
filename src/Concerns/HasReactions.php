@@ -7,6 +7,7 @@ namespace Pharaonic\Laravel\Reacts\Concerns;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Pharaonic\Laravel\Reacts\Models\Reaction;
 use Pharaonic\Laravel\Reacts\Support\ReactionManager;
 
 /**
@@ -26,6 +27,8 @@ trait HasReactions
 
     /**
      * The reactions this model received.
+     *
+     * @return MorphMany<Reaction, $this>
      */
     public function reactions(): MorphMany
     {
@@ -89,6 +92,8 @@ trait HasReactions
 
     /**
      * Only the models the reactor reacted to, with any type or with this one.
+     *
+     * @param  Builder<static>  $query
      *
      * @throws \Pharaonic\Laravel\Reacts\Exceptions\InvalidReactionType when the type is not a valid key or emoji
      */
