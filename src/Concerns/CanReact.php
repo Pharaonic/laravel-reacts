@@ -27,6 +27,8 @@ trait CanReact
 
     /**
      * The reactions this model gave.
+     *
+     * @return MorphMany<Reaction, $this>
      */
     public function givenReactions(): MorphMany
     {

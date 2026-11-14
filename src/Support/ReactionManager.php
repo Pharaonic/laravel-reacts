@@ -188,6 +188,11 @@ final class ReactionManager
 
     /**
      * The reactions given (reactor) or received (reactable) by the model.
+     *
+     * @template TParent of Model
+     *
+     * @param  TParent  $parent
+     * @return MorphMany<Reaction, TParent>
      */
     public static function relation(Model $parent, string $side): MorphMany
     {
@@ -205,6 +210,10 @@ final class ReactionManager
 
     /**
      * Limit a reactions query to one reactor or reactable. An unsaved model matches nothing.
+     *
+     * @template TModel of Model
+     *
+     * @param  Builder<TModel>  $query
      */
     public static function constrain(Builder $query, string $side, Model $model): void
     {
@@ -222,6 +231,10 @@ final class ReactionManager
 
     /**
      * Limit a reactions query to one reaction type.
+     *
+     * @template TModel of Model
+     *
+     * @param  Builder<TModel>  $query
      */
     public static function constrainType(Builder $query, string $type): void
     {
@@ -568,6 +581,8 @@ final class ReactionManager
 
     /**
      * A query on the reactions table without the model's global scopes.
+     *
+     * @return Builder<Reaction>
      */
     private static function query(?Reaction $reaction = null): Builder
     {
