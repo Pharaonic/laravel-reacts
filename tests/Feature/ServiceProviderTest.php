@@ -30,7 +30,12 @@ test('the migrations are published to database migrations', function () {
 });
 
 test('the package registers no routes', function () {
-    $this->assertCount(0, Route::getRoutes());
+    // Laravel 12 serves a local disk's files through its own storage.<disk> routes.
+    $routes = array_filter(Route::getRoutes()->getRoutes(), function ($route) {
+        return ! str_starts_with((string) $route->getName(), 'storage.');
+    });
+
+    $this->assertCount(0, $routes);
 });
 
 /**
