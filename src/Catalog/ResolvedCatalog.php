@@ -20,6 +20,5 @@ final class ResolvedCatalog
         public string $group,
         public bool $freeForm,
         public array $definitions,
-    ) {
-    }
+    ) {}
 }

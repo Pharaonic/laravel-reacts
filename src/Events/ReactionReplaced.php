@@ -25,6 +25,5 @@ final class ReactionReplaced
         public array $previous,
         public Model $reactor,
         public Model $reactable,
-    ) {
-    }
+    ) {}
 }

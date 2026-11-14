@@ -18,6 +18,5 @@ final class ReactionRemoved
         public Reaction $reaction,
         public Model $reactor,
         public Model $reactable,
-    ) {
-    }
+    ) {}
 }

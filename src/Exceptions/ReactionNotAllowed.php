@@ -9,6 +9,4 @@ use RuntimeException;
 /**
  * The reaction policy refused a valid, selectable reaction.
  */
-class ReactionNotAllowed extends RuntimeException
-{
-}
+class ReactionNotAllowed extends RuntimeException {}
