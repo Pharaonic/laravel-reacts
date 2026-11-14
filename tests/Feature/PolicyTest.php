@@ -90,4 +90,18 @@ class PolicyTest extends TestCase
         $this->expectException(InvalidReactionConfiguration::class);
         User::create()->react(Post::create(), 'like');
     }
+
+    public function test_a_policy_binding_that_resolves_to_something_else_refuses_the_reaction(): void
+    {
+        $this->app->bind(NoSelfReactionPolicy::class, function () {
+            return new \stdClass;
+        });
+
+        try {
+            User::create()->react(Post::create(), 'like');
+            $this->fail('The binding was trusted.');
+        } catch (ReactionNotAllowed $exception) {
+            $this->assertSame(0, Reaction::query()->count());
+        }
+    }
 }
