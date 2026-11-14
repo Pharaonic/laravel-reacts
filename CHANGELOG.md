@@ -2,7 +2,7 @@
 
 All notable changes to this project are documented here.
 
-## 10.0.0 - Unreleased
+## 10.0.0 - 2026-11-14
 
 First release of the Laravel 10 line, built from 9.0.0.
 
